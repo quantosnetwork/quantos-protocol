@@ -2,8 +2,10 @@ package cfg
 
 import (
 	"encoding/json"
+	"github.com/davecgh/go-spew/spew"
 	goconfig "github.com/iglin/go-config"
 	"io/ioutil"
+	"log"
 	"os"
 )
 
@@ -12,20 +14,22 @@ var ChainConfig *goconfig.Config
 func init() {
 	var c ChainCfg
 	config := c.Init()
-	config.SetDefaults()
+
 	err := WriteConfig(ConfigPath, config)
 	if err != nil {
-		panic(err)
+		log.Println(err)
 	}
 	ChainConfig = goconfig.NewConfig(ConfigPath, goconfig.Json)
 
 }
 
 func (c ChainCfg) Init() *ChainCfg {
-	return new(ChainCfg)
+	conf := &ChainCfg{}
+	ccfg := conf.SetDefaults()
+	return ccfg
 }
 
-func (c *ChainCfg) SetDefaults() {
+func (c *ChainCfg) SetDefaults() *ChainCfg {
 	c.Development = false
 	c.GenesisBlock = ""
 	c.Name = "QuantosMainNet"
@@ -42,6 +46,7 @@ func (c *ChainCfg) SetDefaults() {
 	c.Vault.VaultTLSKeyFile = ""
 	c.Vault.VaultSecretsPath = "qsecrets/"
 	c.P2P = new(P2PCfg)
+	return c
 }
 
 func WriteConfig(path string, data *ChainCfg) error {
@@ -50,6 +55,7 @@ func WriteConfig(path string, data *ChainCfg) error {
 
 	if !exists {
 		d, err := json.Marshal(data)
+		spew.Dump(d)
 		if err != nil {
 			return err
 		}
@@ -75,7 +81,7 @@ func ConfigFileExists(path string, truncate bool) (bool, []byte) {
 		if err == os.ErrNotExist {
 			return false, nil
 		}
-		panic(err)
+		return false, nil
 	}
 	return true, b
 

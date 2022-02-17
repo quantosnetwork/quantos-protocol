@@ -1,13 +1,19 @@
 {
-  "Name": "",
-  "Version": "",
+  "Name": "QuantosMainNet",
+  "Version": "1.0.0",
   "ChainCode": "",
   "GenesisBlock": "",
   "Development": false,
   "Private": false,
-  "Public": false,
+  "Public": true,
   "HashTable": null,
-  "Vault": null,
+  "Vault": {
+    "VaultURL": "https://localhost",
+    "VaultCredsName": "VAULT_TOKEN",
+    "VaultSecretsPath": "qsecrets/",
+    "VaultTLSKeyFile": "",
+    "VaultTLSCertFile": ""
+  },
   "StartState": {
     "Addresses": null,
     "Balances": null,
@@ -15,6 +21,27 @@
     "MainCurrencyHashID": "",
     "StakingCurrencyHashID": ""
   },
-  "Currency": null,
-  "P2P": null
+  "Currency": {
+    "DenomName": "",
+    "DenomCoinbaseAddress": "",
+    "MaxAvailable": 0,
+    "AvailableAtStart": 0,
+    "BaseValuePairID": "",
+    "Pairs": {},
+    "CanStake": false,
+    "IsDefault": false
+  },
+  "P2P": {
+    "Host": "",
+    "Port": "",
+    "PubKeyFile": "",
+    "PrivKeyFile": "",
+    "LocalIPFS": false,
+    "RemoteIPFSURL": "",
+    "NodeID": "",
+    "BootstrapNodes": null,
+    "TrustedNodes": null,
+    "ProtocolID": "",
+    "ProtocolVersion": ""
+  }
 }

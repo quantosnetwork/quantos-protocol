@@ -1,0 +1,13 @@
+build:
+	go mod tidy
+	go mod vendor
+	go build -o bin/quantosd.exe main.go
+
+compileall:
+	echo "Compiling Quantosd for every OS and Platform"
+	GOOS=freebsd GOARCH=386 go build -o bin/main-freebsd-386/quantosd main.go
+	GOOS=linux GOARCH=386 go build -o bin/main-linux-386/quantosd main.go
+	GOOS=windows GOARCH=386 go build -o bin/main-windows-386/quantosd main.go
+
+run:
+	go run main.go
