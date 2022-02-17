@@ -1,0 +1,20 @@
+{
+  "Name": "",
+  "Version": "",
+  "ChainCode": "",
+  "GenesisBlock": "",
+  "Development": false,
+  "Private": false,
+  "Public": false,
+  "HashTable": null,
+  "Vault": null,
+  "StartState": {
+    "Addresses": null,
+    "Balances": null,
+    "Stakes": null,
+    "MainCurrencyHashID": "",
+    "StakingCurrencyHashID": ""
+  },
+  "Currency": null,
+  "P2P": null
+}
